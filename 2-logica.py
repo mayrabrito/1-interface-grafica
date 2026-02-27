@@ -45,11 +45,11 @@ password_entry = tk.Entry(root, width=30, show='*')
 password_entry.pack()
 
 #Botão
-registar_button = tk.Button(root, text= 'Registar', width=10, command=registar)
+registar_button = tk.Button(root, text='Registar', width=10, command=registar)
 registar_button.pack(pady= (25, 0))
 
 # mensagem informativa
-msg_label = tk.Label(root, text='',bg=CORFUNDO, fg=CORTEXTO, font=("Arial", 14, 'bold'))
+msg_label = tk.Label(root, text='', bg=CORFUNDO, font=("Arial", 20, 'bold'))
 msg_label.pack(pady=30)
 
 # Por último: Iniciar o ciclo de eventos, ou seja, abrir a janela
