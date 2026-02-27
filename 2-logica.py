@@ -1,9 +1,24 @@
 # Interface gráfica no Python
 # Tkinter - vem com a instalação do interpretador do python
 import tkinter as tk
+from pathlib import Path
 
 CORFUNDO = "#7DBBEB"
-CORTEXTO = "#E5E9ED"
+CORTEXTO = "#03182D"
+
+def registar():
+    nome = nome_entry.get()
+    password = password_entry.get()
+
+    if password == '' or nome == '':
+        msg_label.configure(text='Por favor preencha os dados', fg="#bb3939")
+    else:
+        ficheiro = Path(r'dados.txt')
+
+        with ficheiro.open('w', encoding='utf-8',errors='ignore') as file:
+            file.write(f'NOME: {nome}\n')
+            file.write(f'PASSWORD: {password}')
+            msg_label.configure(tex='Dados Registados com Sucesso', fg="#39bb46")
 
 # Criar a variável que representa a janela
 root = tk.Tk()
@@ -26,12 +41,16 @@ nome_entry.pack() #colocar o .pack para aparecer
 password_label = tk.Label(root, text='Digite a sua password:',bg=CORFUNDO, fg=CORTEXTO, font=("Arial", 14, 'bold'))
 password_label.pack(pady=20)
 
-password_entry = tk.Entry(root, width=30)
+password_entry = tk.Entry(root, width=30, show='*')
 password_entry.pack()
 
 #Botão
-registar_button = tk.Button(root, text= 'Registar')
+registar_button = tk.Button(root, text= 'Registar', width=10, command=registar)
 registar_button.pack(pady= (25, 0))
+
+# mensagem informativa
+msg_label = tk.Label(root, text='',bg=CORFUNDO, fg=CORTEXTO, font=("Arial", 14, 'bold'))
+msg_label.pack(pady=30)
 
 # Por último: Iniciar o ciclo de eventos, ou seja, abrir a janela
 root.mainloop()
